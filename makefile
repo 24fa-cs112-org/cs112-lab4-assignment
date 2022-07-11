@@ -1,8 +1,8 @@
 # assignment name (generate executable with this name)
-TARGET = lab3
+TARGET = lab4
 TEST_TARGET = tester
 # .cpp files that do not contain a main() function.
-SOURCES = Student.cpp
+SOURCES = Vec.cpp
 
 CPP       = g++ --std=c++11 -c
 CPPFLAGS   = -Wall -I. -g

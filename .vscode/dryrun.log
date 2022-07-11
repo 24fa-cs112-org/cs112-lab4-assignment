@@ -1,10 +1,8 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/vtn2/classes/cs112/cs112-assignment-repos/cs112-lab3-assignment'
-g++ --std=c++11 -c -Wall -I. -g Student.cpp main.cpp tests.cpp
-echo "Compilation complete!"
- 
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/vtn2/classes/cs112/cs112-assignment-repos/cs112-lab4-assignment'
 c++  -Wall -I. -g  -c -o tests.o tests.cpp
-g++ -o tester -Wall Student.o tests.o
-echo "Linking complete!"
-make: Leaving directory `/Users/vtn2/classes/cs112/cs112-assignment-repos/cs112-lab3-assignment'
+make: Leaving directory `/Users/vtn2/classes/cs112/cs112-assignment-repos/cs112-lab4-assignment'
  
+make: *** No rule to make target `Student.cpp', needed by `obj'.
+make: *** No rule to make target `main.cpp', needed by `obj'.
+
