@@ -1,5 +1,4 @@
 # assignment name (generate executable with this name)
-TARGET = lab4
 TEST_TARGET = tester
 # .cpp files that do not contain a main() function.
 SOURCES = Vec.cpp
@@ -25,8 +24,8 @@ $(TEST_TARGET): obj tests.o
 	$(LINKER) $(TEST_TARGET) $(LFLAGS) $(OBJECTS) tests.o
 	@echo "Linking complete!"
 
-obj: $(SOURCES) $(INCLUDES) main.cpp tests.cpp
-	$(CPP) $(CPPFLAGS) $(SOURCES) main.cpp tests.cpp
+obj: $(SOURCES) $(INCLUDES) tests.cpp
+	$(CPP) $(CPPFLAGS) $(SOURCES) tests.cpp
 	@echo "Compilation complete!"
 
 clean:
