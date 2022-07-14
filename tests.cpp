@@ -57,88 +57,90 @@ TEST_CASE("constructors") {
 TEST_CASE("destructor") {
     //	Vec v(5);
     //	v.~Vec();
+    // // This is actually quite dangerous -- accessing the
+    // // object after it has been destroyed... but we'll do it here.
     //	REQUIRE(v.getSize() == 0);
     //	REQUIRE(v.getArray() == nullptr);
 }
 
 TEST_CASE("assignment") {
-    SECTION("empty-to-empty") {
-        //	Vec v, v0;
-        //	v = v0;
-        //	REQUIRE(v.getSize() == 0);
-        //	REQUIRE(v.getArray() == nullptr);
-    }
-    SECTION("empty-to-nonempty") {
-        //	Vec v1;
-        //	Vec v2(5);
-        //	v2 = v1;
-        //	REQUIRE(v2.getSize() == 0);
-        //	REQUIRE(v2.getArray() == nullptr);
-        //	cout << " 1 " << flush;
-    }
-    SECTION("nonempty-to-empty") {
-        //	Vec v3(5);
-        //	for (unsigned i = 0; i < 5; ++i) {
-        //		v3.getArray()[i] = (i+1);
-        //	}
-        //	Vec v4;
-        //	v4 = v3;
-        //	REQUIRE(v4.getSize() == 5);
-        //	REQUIRE(v4.getArray() != v3.getArray());
-        //	for (unsigned i = 0; i < 5; ++i) {
-        //		REQUIRE(v4.getArray()[i] == (i+1));
-        //	}
-    }
-    SECTION("nonempty-to-nonempty (larger into smaller)") {
-        //	Vec v5(2);
-        //	for (unsigned i = 0; i < 2; ++i) {
-        //		v5.getArray()[i] = (i+1)*10;
-        //	}
-        //	v5 = v3;
-        //	REQUIRE(v5.getSize() == 5);
-        //	REQUIRE(v5.getArray() != v3.getArray());
-        //	for (unsigned i = 0; i < 5; ++i) {
-        //		REQUIRE(v5.getArray()[i] == (i+1));
-        //	}
-    }
-    SECTION("nonempty-to-nonempty (smaller into larger)") {
-        //	Vec v6(7);
-        //	for (unsigned i = 0; i < 7; ++i) {
-        //		v6.getArray()[i] = (i+1)*10;
-        //	}
-        //	v6 = v3;
-        //	REQUIRE(v6.getSize() == 5);
-        //	REQUIRE(v6.getArray() != v3.getArray());
-        //	for (unsigned i = 0; i < 5; ++i) {
-        //		REQUIRE(v6.getArray()[i] == (i+1));
-        //	}
-        //	cout << " 4 " << flush;
-        //	// nonempty-to-nonempty (equal sized)
-        //	Vec v7(5);
-        //	for (unsigned i = 0; i < 5; ++i) {
-        //		v7.getArray()[i] = (i+1)*10;
-        //	}
-        //	v7 = v3;
-        //	REQUIRE(v7.getSize() == 5);
-        //	REQUIRE(v7.getArray() != v3.getArray());
-        //	for (unsigned i = 0; i < 5; ++i) {
-        //		REQUIRE(v7.getArray()[i] == (i+1));
-        //	}
-    }
-    SECTION("assignment chaining") {
-        //	Vec v8;
-        //	Vec v9(4);
-        //	v9 = v8 = v3;
-        //	REQUIRE(v9.getSize() == 5);
-        //	REQUIRE(v9.getSize() == 5);
-        //	REQUIRE(v8.getArray() != v3.getArray());
-        //	REQUIRE(v8.getArray() != v3.getArray());
-        //	REQUIRE(v9.getArray() != v8.getArray());
-        //	for (unsigned i = 0; i < 5; ++i) {
-        //		REQUIRE(v8.getArray()[i] == (i+1));
-        //		REQUIRE(v9.getArray()[i] == (i+1));
-        //	}
-    }
+    // Vec v3(5);
+    // for (unsigned i = 0; i < 5; ++i) {
+    //     v3.getArray()[i] = (i + 1);
+    // }
+    // SECTION("empty-to-empty") {
+    //     Vec v, v0;
+    //     v = v0;
+    //     REQUIRE(v.getSize() == 0);
+    //     REQUIRE(v.getArray() == nullptr);
+    // }
+    // SECTION("empty-to-nonempty") {
+    //     Vec v1;
+    //     Vec v2(5);
+    //     v2 = v1;
+    //     REQUIRE(v2.getSize() == 0);
+    //     REQUIRE(v2.getArray() == nullptr);
+    //     cout << " 1 " << flush;
+    // }
+    // SECTION("nonempty-to-empty") {
+    //     Vec v4;
+    //     v4 = v3;
+    //     REQUIRE(v4.getSize() == 5);
+    //     REQUIRE(v4.getArray() != v3.getArray());
+    //     for (unsigned i = 0; i < 5; ++i) {
+    //         REQUIRE(v4.getArray()[i] == (i + 1));
+    //     }
+    // }
+    // SECTION("nonempty-to-nonempty (larger into smaller)") {
+    //     Vec v5(2);
+    //     for (unsigned i = 0; i < 2; ++i) {
+    //         v5.getArray()[i] = (i + 1) * 10;
+    //     }
+    //     v5 = v3;
+    //     REQUIRE(v5.getSize() == 5);
+    //     REQUIRE(v5.getArray() != v3.getArray());
+    //     for (unsigned i = 0; i < 5; ++i) {
+    //         REQUIRE(v5.getArray()[i] == (i + 1));
+    //     }
+    // }
+    // SECTION("nonempty-to-nonempty (smaller into larger)") {
+    //     Vec v6(7);
+    //     for (unsigned i = 0; i < 7; ++i) {
+    //         v6.getArray()[i] = (i + 1) * 10;
+    //     }
+    //     v6 = v3;
+    //     REQUIRE(v6.getSize() == 5);
+    //     REQUIRE(v6.getArray() != v3.getArray());
+    //     for (unsigned i = 0; i < 5; ++i) {
+    //         REQUIRE(v6.getArray()[i] == (i + 1));
+    //     }
+    // }
+    // SECTION("nonempty-to-nonempty (equal sized)") {
+    //     Vec v7(5);
+    //     for (unsigned i = 0; i < 5; ++i) {
+    //         v7.getArray()[i] = (i + 1) * 10;
+    //     }
+    //     v7 = v3;
+    //     REQUIRE(v7.getSize() == 5);
+    //     REQUIRE(v7.getArray() != v3.getArray());
+    //     for (unsigned i = 0; i < 5; ++i) {
+    //         REQUIRE(v7.getArray()[i] == (i + 1));
+    //     }
+    // }
+    // SECTION("assignment chaining") {
+    //     Vec v8;
+    //     Vec v9(4);
+    //     v9 = v8 = v3;
+    //     REQUIRE(v9.getSize() == 5);
+    //     REQUIRE(v9.getSize() == 5);
+    //     REQUIRE(v8.getArray() != v3.getArray());
+    //     REQUIRE(v8.getArray() != v3.getArray());
+    //     REQUIRE(v9.getArray() != v8.getArray());
+    //     for (unsigned i = 0; i < 5; ++i) {
+    //         REQUIRE(v8.getArray()[i] == (i + 1));
+    //         REQUIRE(v9.getArray()[i] == (i + 1));
+    //     }
+    // }
 }
 
 TEST_CASE("getSize") {
@@ -166,20 +168,14 @@ TEST_CASE("setItem") {
     }
     SECTION("nonempty case, invalid subscript") {
         //	Vec v2(3);
-        // REQUIRE(v2.setItem(3, 33), range_error);
+        // REQUIRE_THROWS_AS(v2.setItem(3, 33), range_error);
     }
 }
 
 TEST_CASE("getItem") {
     SECTION("empty Vec") {
         //	Vec v0;
-        //	try {
-        //		v0.getItem(0);
-        //		cerr << "getItem() succeeded on empty Vec";
-        //		exit(1);
-        //	} catch (range_error&) {
-        //		cout << " 0 " << flush;
-        //	}
+        // REQUIRE_THROWS_AS(v0.getItem(0), range_error);
     }
     SECTION("non-empty, valid access") {
         //	Vec v(5);
@@ -192,7 +188,7 @@ TEST_CASE("getItem") {
     }
     SECTION("nonempty Vec, invalid index") {
         //	Vec v2(3);
-        //	REQUIRE(v2.getItem(3), range_error);
+        //	REQUIRE_THROWS_AS(v2.getItem(3), range_error);
     }
 }
 
@@ -226,7 +222,7 @@ TEST_CASE("setSize") {
         //	for (unsigned i = 0; i < 5; ++i) {
         //		v2.setItem(i, i+1);
         //	}
-        //	saveAddress = v2.getArray();
+        //	Item * ssaveAddress = v2.getArray();
         //	v2.setSize(3);
         //	REQUIRE(v2.getSize() == 3);
         //	for (unsigned i = 0; i < 3; ++i) {
@@ -239,7 +235,7 @@ TEST_CASE("setSize") {
         //	for (unsigned i = 0; i < 5; ++i) {
         //		v3.setItem(i, i+1);
         //	}
-        //	saveAddress = v3.getArray();
+        //	Item * ssaveAddress = v3.getArray();
         //	v3.setSize(5);
         //	REQUIRE(v3.getSize() == 5);
         //	for (unsigned i = 0; i < 5; ++i) {
@@ -248,7 +244,11 @@ TEST_CASE("setSize") {
         //	REQUIRE(v3.getArray() == saveAddress);
     }
     SECTION("set size to zero") {
-        //	v3.setSize(0);
+        // Vec v3(5);
+        // for (unsigned i = 0; i < 5; ++i) {
+        //     v3.setItem(i, i + 1);
+        // }
+        //  v3.setSize(0);
         //	REQUIRE(v3.getSize() == 0);
         //	REQUIRE(v3.getArray() == nullptr);
     }
