@@ -26,21 +26,31 @@ TEST_CASE("constructors") {
         //	REQUIRE(v3.getArray() == nullptr);
     }
     SECTION("copy") {
-        //	Vec v1(3);
-        //	REQUIRE(v1.getSize() == 3);
-        //	REQUIRE(v1.getArray() != nullptr);
-        //	for (int i = 0; i < 3; ++i) {
-        //		REQUIRE(v1.getArray()[i] == 0);
-        //	}
-        //	Vec v2(8);
-        //	REQUIRE(v2.getSize() == 8);
-        //	REQUIRE(v2.getArray() != nullptr);
-        //	for (int i = 0; i < 8; ++i) {
-        //		REQUIRE(v2.getArray()[i] == 0);
-        //	}
-        //	Vec v3(0);
-        //	REQUIRE(v3.getSize() == 0);
-        //	REQUIRE(v3.getArray() == nullptr);
+        // Vec v1;
+        // Vec v2(v1);
+        // REQUIRE(v2.mySize == 0);
+        // REQUIRE(v2.myArray == NULL);
+
+        // Vec v3(5);
+        // Vec v4(v3);
+        // REQUIRE(v4.mySize == 5);
+        // REQUIRE(v4.myArray != NULL);
+        // REQUIRE(v4.myArray != v3.myArray);
+        // for (unsigned i = 0; i < 5; ++i) {
+        //     REQUIRE(v4.myArray[i] == 0);
+        // }
+
+        // Vec v5(5);
+        // for (unsigned i = 0; i < 5; ++i) {
+        //     v5.myArray[i] = (i + 1);
+        // }
+        // Vec v6(v5);
+        // REQUIRE(v6.mySize == 5);
+        // REQUIRE(v6.myArray != NULL);
+        // REQUIRE(v6.myArray != v5.myArray);
+        // for (unsigned i = 0; i < 5; ++i) {
+        //     REQUIRE(v6.myArray[i] == v5.myArray[i]);
+        // }
     }
 }
 
