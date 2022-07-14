@@ -45,12 +45,10 @@ TEST_CASE("constructors") {
 }
 
 TEST_CASE("destructor") {
-    SECTION("") {
-        //	Vec v(5);
-        //	v.~Vec();
-        //	REQUIRE(v.getSize() == 0);
-        //	REQUIRE(v.getArray() == nullptr);
-    }
+    //	Vec v(5);
+    //	v.~Vec();
+    //	REQUIRE(v.getSize() == 0);
+    //	REQUIRE(v.getArray() == nullptr);
 }
 
 TEST_CASE("assignment") {
@@ -290,48 +288,42 @@ TEST_CASE("equality") {
 }
 
 TEST_CASE("writeToStream") {
-    SECTION("") {
-        //       Vec v1(5);
-        //       for (unsigned i = 0; i < 5; ++i) {
-        //               v1.setItem(i, i+10);
-        //       }
-        //	// write to an ofstream instead of cout, to automate the test
-        //       ofstream fout("vecStreamOut.txt");
-        //       REQUIRE(fout.is_open());
-        //       fout << v1.getSize() << "\n";
-        //       v1.writeTo(fout);
-        //	    fout.close();
-        //	// now read in what we just wrote...
-        //       ifstream fin("vecStreamOut.txt");
-        //       REQUIRE(fin.is_open());
-        //       unsigned size;
-        //       fin >> size;
-        //       REQUIRE(size == 5);
-        //       double value;
-        //       for (unsigned i = 0; i < 5; ++i) {
-        //               fin >> value;
-        //               REQUIRE(value == i+10);
-        //       }
-    }
-    //       cout << "Passed! See 'vecStreamOut.txt' for values..." <<
-    //       endl;
+    //       Vec v1(5);
+    //       for (unsigned i = 0; i < 5; ++i) {
+    //               v1.setItem(i, i+10);
+    //       }
+    //	// write to an ofstream instead of cout, to automate the test
+    //       ofstream fout("vecStreamOut.txt");
+    //       REQUIRE(fout.is_open());
+    //       fout << v1.getSize() << "\n";
+    //       v1.writeTo(fout);
+    //	    fout.close();
+    //	// now read in what we just wrote...
+    //       ifstream fin("vecStreamOut.txt");
+    //       REQUIRE(fin.is_open());
+    //       unsigned size;
+    //       fin >> size;
+    //       REQUIRE(size == 5);
+    //       double value;
+    //       for (unsigned i = 0; i < 5; ++i) {
+    //               fin >> value;
+    //               REQUIRE(value == i+10);
+    //       }
 }
 
 TEST_CASE("readFromStream") {
-    SECTION("") {
-        //	// an ifstream is-an istream, so use one to automate the test
-        //       ifstream fin("vecStreamOut.txt");
-        //       REQUIRE(fin.is_open());
-        //	// get the size and build the Vec
-        //       unsigned size;
-        //       fin >> size;
-        //       REQUIRE(size == 5);
-        //       Vec v(size);
-        //	// test readFrom()
-        //       v.readFrom(fin);
-        //       for (unsigned i = 0; i < 5; ++i) {
-        //               REQUIRE(v.getItem(i)== i+10);
-        //       }
-        //	fin.close();
-    }
+    //	// an ifstream is-an istream, so use one to automate the test
+    //       ifstream fin("vecStreamOut.txt");
+    //       REQUIRE(fin.is_open());
+    //	// get the size and build the Vec
+    //       unsigned size;
+    //       fin >> size;
+    //       REQUIRE(size == 5);
+    //       Vec v(size);
+    //	// test readFrom()
+    //       v.readFrom(fin);
+    //       for (unsigned i = 0; i < 5; ++i) {
+    //               REQUIRE(v.getItem(i)== i+10);
+    //       }
+    //	fin.close();
 }
