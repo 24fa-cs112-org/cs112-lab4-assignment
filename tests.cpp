@@ -5,8 +5,8 @@
 TEST_CASE("constructors") {
     SECTION("default") {
         Vec v;
-        REQUIRE(v.getSize() == 0);
-        REQUIRE(v.getArray() == nullptr);
+        // REQUIRE(v.getSize() == 0);
+        // REQUIRE(v.getArray() == nullptr);
     }
     SECTION("explicit-value") {
         //	Vec v1(3);

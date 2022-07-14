@@ -13,11 +13,11 @@ using namespace std;
 typedef double Item;
 
 class Vec {
-public:
+   public:
 	Vec();
 	virtual ~Vec();
-	
-private:
+
+   private:
 
 };
 
