@@ -143,15 +143,6 @@ TEST_CASE("assignment") {
     // }
 }
 
-TEST_CASE("getSize") {
-    SECTION("empty and non-empty") {
-        //	Vec v1;
-        //	REQUIRE(v1.getSize() == 0);
-        //	Vec v2(5);
-        //	REQUIRE(v2.getSize() == 5);
-    }
-}
-
 TEST_CASE("setItem") {
     SECTION("empty case") {
         //	Vec v0;
@@ -222,7 +213,7 @@ TEST_CASE("setSize") {
         //	for (unsigned i = 0; i < 5; ++i) {
         //		v2.setItem(i, i+1);
         //	}
-        //	Item * ssaveAddress = v2.getArray();
+        //	Item * saveAddress = v2.getArray();
         //	v2.setSize(3);
         //	REQUIRE(v2.getSize() == 3);
         //	for (unsigned i = 0; i < 3; ++i) {
@@ -235,7 +226,7 @@ TEST_CASE("setSize") {
         //	for (unsigned i = 0; i < 5; ++i) {
         //		v3.setItem(i, i+1);
         //	}
-        //	Item * ssaveAddress = v3.getArray();
+        //	Item * saveAddress = v3.getArray();
         //	v3.setSize(5);
         //	REQUIRE(v3.getSize() == 5);
         //	for (unsigned i = 0; i < 5; ++i) {
