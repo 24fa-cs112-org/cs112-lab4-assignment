@@ -1,0 +1,262 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: constructor default
+      id: constructor-default
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: constructor default
+        setup-command: make
+        command: "./tester constructors -c default"
+        timeout: 4
+        max-score: 0
+    - name: writeTo
+      id: writeto
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: writeTo
+        setup-command: make
+        command: "./tester writeToStream"
+        timeout: 10
+        max-score: 1
+    - name: constructors copy
+      id: constructors-copy
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: constructors copy
+        setup-command: make
+        command: "./tester constructors -c copy"
+        timeout: 10
+        max-score: 1
+    - name: destructor
+      id: destructor
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: destructor
+        setup-command: make
+        command: "./tester destructor"
+        timeout: 10
+        max-score: 1
+    - name: getSize
+      id: getsize
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: getSize
+        setup-command: make
+        command: "./tester getSize"
+        timeout: 10
+        max-score: 1
+    - name: setItem mt
+      id: setitem-mt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setItem mt
+        setup-command: make
+        command: ./tester setItem -c "empty case"
+        timeout: 10
+    - name: setItem valid sub
+      id: setitem-valid-sub
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setItem valid sub
+        setup-command: make
+        command: ./tester setItem -c "nonempty case, valid subscript"
+        timeout: 10
+        max-score: 1
+    - name: setItem invalid sub
+      id: setitem-invalid-sub
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setItem invalid sub
+        setup-command: make
+        command: ./tester setItem -c "nonempty case, invalid subscript"
+        timeout: 10
+        max-score: 1
+    - name: getItem mt
+      id: getitem-mt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: getItem mt
+        setup-command: make
+        command: ./tester getItem -c "empty Vec"
+        timeout: 10
+    - name: getItem valid index
+      id: getitem-valid-index
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: getItem valid index
+        setup-command: make
+        command: ./tester getItem -c "non-empty, valid access"
+        timeout: 10
+        max-score: 1
+    - name: getItem invalid index
+      id: getitem-invalid-index
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: getItem invalid index
+        setup-command: make
+        command: ./tester getItem -c "nonempty Vec, invalid index"
+        timeout: 10
+        max-score: 1
+    - name: setSize mt
+      id: setsize-mt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setSize mt
+        setup-command: make
+        command: "./tester setSize -c empty"
+        timeout: 10
+    - name: setSize inc
+      id: setsize-inc
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setSize inc
+        setup-command: make
+        command: ./tester setSize -c "non-empty, increasing"
+        timeout: 10
+        max-score: 1
+    - name: setSize dec
+      id: setsize-dec
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setSize dec
+        setup-command: make
+        command: ./tester setSize -c "non-empty, decreasing"
+        timeout: 10
+    - name: setSize samesize
+      id: setsize-samesize
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setSize samesize
+        setup-command: make
+        command: ./tester setSize -c "non-empty, same-size"
+        timeout: 10
+        max-score: 1
+    - name: setSize to0
+      id: setsize-to0
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: setSize to0
+        setup-command: make
+        command: ./tester setSize -c "set size to zero"
+        timeout: 10
+        max-score: 1
+    - name: equality mt
+      id: equality-mt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: equality mt
+        setup-command: make
+        command: ./tester equality -c "empty case"
+        timeout: 10
+    - name: equality defaults
+      id: equality-defaults
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: equality defaults
+        setup-command: make
+        command: ./tester equality -c "nonempty, same size, default values"
+        timeout: 10
+        max-score: 1
+    - name: equality setvals
+      id: equality-setvals
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: equality setvals
+        setup-command: make
+        command: ./tester equality -c "nonempty, same size, set values"
+        timeout: 10
+        max-score: 1
+    - name: equality mt v nonmt
+      id: equality-mt-v-nonmt
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: equality mt v nonmt
+        setup-command: make
+        command: ./tester equality -c "empty vs nonempty"
+        timeout: 10
+    - name: equality 1st val diff
+      id: equality-1st-val-diff
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: equality 1st val diff
+        setup-command: make
+        command: ./tester equality -c "nonempty, same size, first value different
+        timeout: 10
+        max-score: 1
+    - name: equality mid val diff
+      id: equality-mid-val-diff
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: equality mid val diff
+        setup-command: make
+        command: ./tester equality -c "nonempty, same size, middle value different"
+        timeout: 10
+    - name: equality last val diff
+      id: equality-last-val-diff
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: equality last val diff
+        setup-command: make
+        command: ./tester equality -c "nonempty, same size, last value different"
+        timeout: 10
+    - name: writeToStream
+      id: writetostream
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: writeToStream
+        setup-command: make
+        command: "./tester writeToStream"
+        timeout: 10
+        max-score: 1
+    - name: readFrom
+      id: readfrom
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: readFrom
+        setup-command: make
+        command: "./tester readFromStream"
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        CONSTRUCTOR-DEFAULT_RESULTS: "${{steps.constructor-default.outputs.result}}"
+        WRITETO_RESULTS: "${{steps.writeto.outputs.result}}"
+        CONSTRUCTORS-COPY_RESULTS: "${{steps.constructors-copy.outputs.result}}"
+        DESTRUCTOR_RESULTS: "${{steps.destructor.outputs.result}}"
+        GETSIZE_RESULTS: "${{steps.getsize.outputs.result}}"
+        SETITEM-MT_RESULTS: "${{steps.setitem-mt.outputs.result}}"
+        SETITEM-VALID-SUB_RESULTS: "${{steps.setitem-valid-sub.outputs.result}}"
+        SETITEM-INVALID-SUB_RESULTS: "${{steps.setitem-invalid-sub.outputs.result}}"
+        GETITEM-MT_RESULTS: "${{steps.getitem-mt.outputs.result}}"
+        GETITEM-VALID-INDEX_RESULTS: "${{steps.getitem-valid-index.outputs.result}}"
+        GETITEM-INVALID-INDEX_RESULTS: "${{steps.getitem-invalid-index.outputs.result}}"
+        SETSIZE-MT_RESULTS: "${{steps.setsize-mt.outputs.result}}"
+        SETSIZE-INC_RESULTS: "${{steps.setsize-inc.outputs.result}}"
+        SETSIZE-DEC_RESULTS: "${{steps.setsize-dec.outputs.result}}"
+        SETSIZE-SAMESIZE_RESULTS: "${{steps.setsize-samesize.outputs.result}}"
+        SETSIZE-TO0_RESULTS: "${{steps.setsize-to0.outputs.result}}"
+        EQUALITY-MT_RESULTS: "${{steps.equality-mt.outputs.result}}"
+        EQUALITY-DEFAULTS_RESULTS: "${{steps.equality-defaults.outputs.result}}"
+        EQUALITY-SETVALS_RESULTS: "${{steps.equality-setvals.outputs.result}}"
+        EQUALITY-MT-V-NONMT_RESULTS: "${{steps.equality-mt-v-nonmt.outputs.result}}"
+        EQUALITY-1ST-VAL-DIFF_RESULTS: "${{steps.equality-1st-val-diff.outputs.result}}"
+        EQUALITY-MID-VAL-DIFF_RESULTS: "${{steps.equality-mid-val-diff.outputs.result}}"
+        EQUALITY-LAST-VAL-DIFF_RESULTS: "${{steps.equality-last-val-diff.outputs.result}}"
+        WRITETOSTREAM_RESULTS: "${{steps.writetostream.outputs.result}}"
+        READFROM_RESULTS: "${{steps.readfrom.outputs.result}}"
+      with:
+        runners: constructor-default,writeto,constructors-copy,destructor,getsize,setitem-mt,setitem-valid-sub,setitem-invalid-sub,getitem-mt,getitem-valid-index,getitem-invalid-index,setsize-mt,setsize-inc,setsize-dec,setsize-samesize,setsize-to0,equality-mt,equality-defaults,equality-setvals,equality-mt-v-nonmt,equality-1st-val-diff,equality-mid-val-diff,equality-last-val-diff,writetostream,readfrom
