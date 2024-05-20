@@ -217,6 +217,6 @@ TEST_CASE("readFromStream") {
     // istrstream istr("10 11 12 13 14 ");
     // v1.readFrom(istr);
     // for (unsigned i = 0; i < 5; ++i) {
-    //     REQUIRE(v1[i] == i + 10);
+    //     REQUIRE(v1.getItem(i) == i + 10);
     // }
 }
