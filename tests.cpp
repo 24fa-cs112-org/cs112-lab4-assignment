@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <stdexcept>
+#include <strstream>
 using namespace std;
 #include "Vec.h"
 #include "catch.hpp"
@@ -205,38 +206,17 @@ TEST_CASE("writeToStream") {
     // for (unsigned i = 0; i < 5; ++i) {
     //     v1.setItem(i, i + 10);
     // }
-    // // write to an ofstream instead of cout, to automate the test
-    // ofstream fout("vecStreamOut.txt");
-    // REQUIRE(fout.is_open());
-    // fout << v1.getSize() << "\n";
-    // v1.writeTo(fout);
-    // fout.close();
-    // // now read in what we just wrote...
-    // ifstream fin("vecStreamOut.txt");
-    // REQUIRE(fin.is_open());
-    // unsigned size;
-    // fin >> size;
-    // REQUIRE(size == 5);
-    // double value;
-    // for (unsigned i = 0; i < 5; ++i) {
-    //     fin >> value;
-    //     REQUIRE(value == i + 10);
-    // }
+    // // a ostrstream acts like a stream, but is actually a string.
+    // ostrstream ostr;
+    // v1.writeTo(ostr);
+    // REQUIRE(ostr.str() == "10 11 12 13 14 ");
 }
 
 TEST_CASE("readFromStream") {
-    // // an ifstream is-an istream, so use one to automate the test
-    // ifstream fin("vecStreamOut.txt");
-    // REQUIRE(fin.is_open());
-    // // get the size and build the Vec
-    // unsigned size;
-    // fin >> size;
-    // REQUIRE(size == 5);
-    // Vec v(size);
-    // // test readFrom()
-    // v.readFrom(fin);
+    // Vec v1(5);
+    // istrstream istr("10 11 12 13 14 ");
+    // v1.readFrom(istr);
     // for (unsigned i = 0; i < 5; ++i) {
-    //     REQUIRE(v.getItem(i) == i + 10);
+    //     REQUIRE(v1[i] == i + 10);
     // }
-    // fin.close();
 }
